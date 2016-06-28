@@ -5,7 +5,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/projtest</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/projtest?createDatabaseIfNotExist=true</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
  
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
@@ -18,6 +18,12 @@
         <property name="show_sql">true</property>
         <property name="format_sql">false</property>
  
-        <mapping class="pojo.*"></mapping> 
+        <mapping class="pojo.EmployeeRoles"></mapping>
+        <mapping class="pojo.Employee"></mapping>
+        <mapping class="pojo.ProjectInfo"></mapping>
+		<mapping class="pojo.ReleaseInfo"></mapping>
+		<mapping class="pojo.ItemsInfo"></mapping>
+		<mapping class="pojo.IterationInfo"></mapping>
+		
     </session-factory>
 </hibernate-configuration>

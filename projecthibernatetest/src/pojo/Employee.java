@@ -20,6 +20,12 @@ public class Employee {
 
 	@Column(name = "employee_designation")
 	private String employeeDesignation;
+	
+	@Column(name = "employee_username")
+	private String employeeUsername;
+	
+	@Column(name = "employee_password")
+	private String employeePassword;
 
 	@OneToOne
 	@JoinColumn(name = "role_id")

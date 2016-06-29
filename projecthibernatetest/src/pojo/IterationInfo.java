@@ -16,13 +16,13 @@ public class IterationInfo {
 	private int iterationId;
 
 	@ManyToOne
-	@JoinColumn(name = "release_id")
+	@JoinColumn(name = "iteration_for_release", referencedColumnName = "release_id")
 	private ReleaseInfo release;
 
 	@Column(name = "iteration_title")
 	private String iterationTitle;
 
-	@Column(name = "iteration_description")
+	@Column(name = "iteration_description", columnDefinition = "VARCHAR(1024)")
 	private String iterationDescription;
 
 	@Temporal(TemporalType.DATE)

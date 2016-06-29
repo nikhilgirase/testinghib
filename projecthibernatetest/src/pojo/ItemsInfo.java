@@ -14,18 +14,18 @@ public class ItemsInfo {
 	@Column(name = "item_title")
 	private String itemTitle;
 
-	@Column(name = "item_description")
+	@Column(name = "item_description", columnDefinition = "VARCHAR(1024)")
 	private String itemDescription;
 	
 	@Column(name = "item_status")
-	private String itemStatus;
+	private int itemStatus;
 	
 	@ManyToOne
-	@JoinColumn(name = "release_id")
+	@JoinColumn(name = "item_for_release", referencedColumnName = "release_id")
 	private ReleaseInfo release;
 	
 	@ManyToOne
-	@JoinColumn(name = "iteration_id")
+	@JoinColumn(name = "item_for_iteration",referencedColumnName = "iteration_id")
 	private IterationInfo iteration;
 
 }

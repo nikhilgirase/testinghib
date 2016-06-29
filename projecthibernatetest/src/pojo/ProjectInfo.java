@@ -16,14 +16,14 @@ public class ProjectInfo {
 	@Column(name = "project_title")
 	private String projectTitle;
 
-	@Column(name = "project_description")
+	@Column(name = "project_description", columnDefinition = "VARCHAR(1024)")
 	private String projectDecription;
-
-	@OneToMany(mappedBy = "project")
-	private List<ReleaseInfo> releaseInfo;
 	
 	@ManyToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
+	
+	@OneToMany(mappedBy = "project")
+	private List<ReleaseInfo> releaseInfo;
 
 }

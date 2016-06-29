@@ -16,13 +16,13 @@ public class ReleaseInfo {
 	private int releaseId;
 
 	@ManyToOne
-	@JoinColumn(name = "project_id")
+	@JoinColumn(name = "release_project", referencedColumnName = "project_id")
 	private ProjectInfo project;
 
 	@Column(name = "release_title")
 	private String releaseTitle;
 
-	@Column(name = "release_description")
+	@Column(name = "release_description", columnDefinition = "VARCHAR(1024)")
 	private String releaseDescription;
 
 	@Temporal(TemporalType.DATE)
@@ -49,8 +49,9 @@ public class ReleaseInfo {
 	@Column(name = "release_status")
 	private String releaseStatus;
 
-	@Column(name = "release_manager")
-	private String releaseManager;
+	@ManyToOne
+	@JoinColumn(name = "release_manager", referencedColumnName = "employee_id")
+	private Employee projemployee;
 
 	@Column(name = "release_version")
 	private String releaseVersion;

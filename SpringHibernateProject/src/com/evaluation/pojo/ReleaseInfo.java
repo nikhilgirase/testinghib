@@ -7,6 +7,7 @@ import javax.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -20,7 +21,8 @@ public class ReleaseInfo {
 
 	@ManyToOne
 	@JoinColumn(name = "release_project", referencedColumnName = "project_id")
-	@JsonBackReference("release_info")
+	//@JsonBackReference("release_info")
+	@JsonIgnore
 	private ProjectInfo project;
 
 	@Column(name = "release_title")
@@ -55,18 +57,21 @@ public class ReleaseInfo {
 
 	@ManyToOne
 	@JoinColumn(name = "release_manager", referencedColumnName = "employee_id")
-	@JsonBackReference("release_info")
+	//@JsonBackReference("release_info")
+	@JsonIgnore
 	private Employee projemployee;
 
 	@Column(name = "release_version")
 	private String releaseVersion;
 
 	@OneToMany(mappedBy = "release",fetch=FetchType.EAGER)
-	@JsonManagedReference("iteration_info")
+	//@JsonManagedReference("iteration_info")
+	@JsonIgnore
 	private List<IterationInfo> iterationInfo;
 	
 	@OneToMany(mappedBy = "release",fetch=FetchType.EAGER)
-	@JsonManagedReference("item_info")
+	//@JsonManagedReference("item_info")
+	@JsonIgnore
 	private List<ItemsInfo> itemInfo;
 
 	public int getReleaseId() {
@@ -76,7 +81,7 @@ public class ReleaseInfo {
 	public void setReleaseId(int releaseId) {
 		this.releaseId = releaseId;
 	}
-
+	
 	public ProjectInfo getProject() {
 		return project;
 	}
@@ -150,7 +155,7 @@ public class ReleaseInfo {
 	public void setReleaseStatus(String releaseStatus) {
 		this.releaseStatus = releaseStatus;
 	}
-
+	
 	public Employee getProjemployee() {
 		return projemployee;
 	}

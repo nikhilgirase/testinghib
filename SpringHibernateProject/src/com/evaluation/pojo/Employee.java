@@ -35,12 +35,13 @@ public class Employee {
 	private EmployeeRoles employeeRoleId;
 	
 	@OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
-	@JsonManagedReference("project_info")
-	
+	//@JsonManagedReference("project_info")
+	@JsonIgnore
 	private List<ProjectInfo> project;
 	
 	@OneToMany(mappedBy = "projemployee",fetch=FetchType.EAGER)
-	@JsonManagedReference("project_info")
+	//@JsonManagedReference("project_info")
+	@JsonIgnore
 	private List<ReleaseInfo> projEpmInfo;
 
 	public int getEmployeeId() {

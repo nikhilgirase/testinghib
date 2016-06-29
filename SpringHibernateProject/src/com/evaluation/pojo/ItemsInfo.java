@@ -25,13 +25,13 @@ public class ItemsInfo {
 	
 	@ManyToOne
 	@JoinColumn(name = "item_for_release", referencedColumnName = "release_id")
-	@JsonBackReference("item_info")
+	//@JsonBackReference("item_info")
 	@JsonIgnore
 	private ReleaseInfo release;
 	
 	@ManyToOne
 	@JoinColumn(name = "item_for_iteration",referencedColumnName = "iteration_id")
-	@JsonBackReference("item_info")
+	//@JsonBackReference("item_info")
 	@JsonIgnore
 	private IterationInfo iteration;
 
@@ -66,7 +66,7 @@ public class ItemsInfo {
 	public void setItemStatus(int itemStatus) {
 		this.itemStatus = itemStatus;
 	}
-
+	
 	public ReleaseInfo getRelease() {
 		return release;
 	}
@@ -74,7 +74,7 @@ public class ItemsInfo {
 	public void setRelease(ReleaseInfo release) {
 		this.release = release;
 	}
-
+	
 	public IterationInfo getIteration() {
 		return iteration;
 	}

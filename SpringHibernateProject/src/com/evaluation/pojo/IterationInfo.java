@@ -21,7 +21,7 @@ public class IterationInfo {
 
 	@ManyToOne
 	@JoinColumn(name = "iteration_for_release", referencedColumnName = "release_id")
-	@JsonBackReference("iteration_info")
+	//@JsonBackReference("iteration_info")
 	@JsonIgnore
 	private ReleaseInfo release;
 
@@ -48,7 +48,8 @@ public class IterationInfo {
 	private String iterationType;
 	
 	@OneToMany(mappedBy = "iteration",fetch=FetchType.EAGER)
-	@JsonManagedReference("item_info")
+	//@JsonManagedReference("item_info")
+	@JsonIgnore
 	private List<ItemsInfo> itemInfo;
 
 	public int getIterationId() {
@@ -58,7 +59,7 @@ public class IterationInfo {
 	public void setIterationId(int iterationId) {
 		this.iterationId = iterationId;
 	}
-
+	
 	public ReleaseInfo getRelease() {
 		return release;
 	}

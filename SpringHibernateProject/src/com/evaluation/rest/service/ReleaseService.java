@@ -1,5 +1,7 @@
 package com.evaluation.rest.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,14 +11,21 @@ import com.evaluation.pojo.ReleaseInfo;
 @Service
 public class ReleaseService {
 
-@Autowired
-private ReleaseDao rd;
+	@Autowired
+	private ReleaseDao rd;
 
 
-public ReleaseInfo getReleaseDetails()
-{
-	System.out.println(rd);
-	ReleaseInfo obj=rd.getList();
-	return obj;
-}
+	public List getAllReleaseDetails()
+	{
+		
+		List obj=rd.getReleaseList();
+		return obj;
+	}
+
+	public List getProjReleaselist(){
+		List projRelease=rd.getRelease(123006);
+		return projRelease;
+	}
+	
+	
 }

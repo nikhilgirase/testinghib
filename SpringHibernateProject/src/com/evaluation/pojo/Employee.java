@@ -31,7 +31,7 @@ public class Employee {
 	private String employeePassword;
 
 	@OneToOne
-	@JoinColumn(name = "role_id")
+	@JoinColumn(name = "employee_role",referencedColumnName="role_id",nullable=false)
 	private EmployeeRoles employeeRoleId;
 	
 	@OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)

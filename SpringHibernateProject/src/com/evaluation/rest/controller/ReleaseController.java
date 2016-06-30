@@ -1,5 +1,8 @@
 package com.evaluation.rest.controller;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,31 +10,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.evaluation.Dao.ReleaseDao;
+import com.evaluation.pojo.ProjectInfo;
 import com.evaluation.pojo.ReleaseInfo;
 import com.evaluation.rest.service.ReleaseService;
 
 @RestController
 public class ReleaseController {
-
+	public  final Logger logger = Logger.getLogger(ReleaseDao.class.getName());	
 	
 	@Autowired
-	private ReleaseService rs;
+	private ReleaseService  relServ;
 	
-	@RequestMapping(value = "/release", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public  ReleaseInfo getPlayerDetails() {
+	
+	
+	@RequestMapping(value = "/releaseList", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public  List getReleaseDetails() {
 		
-        ReleaseInfo details=rs.getReleaseDetails();
-        System.out.println(details.getReleaseId());
-        System.out.println(details.getReleaseDescription());
-        System.out.println(details.getReleasePlanneDdate());
-        System.out.println(details.getActualReleaseDate());
-        System.out.println(details.getReleaseStartDate());
-        System.out.println(details.getReleaseStatus());
-        System.out.println(details.getReleaseTitle());
-        System.out.println(details.getReleaseType());
-        System.out.println(details.getReleaseVersion());
+        //ReleaseInfo details=rs.getReleaseDetails();
+		List details=relServ.getAllReleaseDetails();
+		for (Object object : details) {
+			ReleaseInfo r= (ReleaseInfo)object;
+		}
         
 		return details;
     }
+	
+	@RequestMapping(value = "/projectReleaseList", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public  List getProjReleaseList(){
+        List projRelease=relServ.getProjReleaselist();
+        return projRelease;
+    }
+	
+	
 
 }
